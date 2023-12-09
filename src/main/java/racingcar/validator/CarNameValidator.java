@@ -1,10 +1,11 @@
 package racingcar.validator;
 
 import static racingcar.config.CarNameConfig.MAX_CAR_NAME_LENGTH;
+import static racingcar.config.ErrorMessage.INVALID_CAR_NAME_DUPLICATE;
+import static racingcar.config.ErrorMessage.INVALID_CAR_NAME_LENGTH;
 
 import java.util.List;
 import java.util.Set;
-import racingcar.config.ErrorMessage;
 
 public class CarNameValidator {
     public void validateCarName(List<String> carNames) {
@@ -21,7 +22,7 @@ public class CarNameValidator {
     private void checkLengthByCarName(List<String> carNames) {
         for (String carName : carNames) {
             if (carName.length() > MAX_CAR_NAME_LENGTH || carName.isEmpty()) {
-                throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage());
+                throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
             }
         }
     }
@@ -29,13 +30,13 @@ public class CarNameValidator {
     private void checkDuplicateCarName(List<String> carNames) {
         Set<String> carNamesExceptDuplicate = Set.copyOf(carNames);
         if (carNamesExceptDuplicate.size() != carNames.size()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_DUPLICATE.getMessage());
+            throw new IllegalArgumentException(INVALID_CAR_NAME_DUPLICATE.getMessage());
         }
     }
 
     private void checkEmpty(List<String> carNames) {
         if (carNames.isEmpty()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_CAR_NAME_LENGTH.getMessage());
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }
 }
