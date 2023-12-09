@@ -30,6 +30,6 @@ public class RacingController {
     }
 
     private List<String> parserCarNames(String carNames) {
-        return Arrays.stream(carNames.split(CarNameConfig.PARSER)).toList();
+        return Arrays.stream(carNames.split(CarNameConfig.PARSER)).map(String::trim).toList();
     }
 }
