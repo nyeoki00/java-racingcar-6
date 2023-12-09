@@ -15,8 +15,8 @@ class RacingTimeValidatorTest {
         checkIllegalArgumentException(racingTime);
     }
 
-    @DisplayName("1~2147483647 이외의 숫자 입력할 경우 예외 발생하는지 확인")
-    @ValueSource(strings = {"100001", "-3", "0"})
+    @DisplayName("1~100000 이외의 숫자 입력할 경우 예외 발생하는지 확인")
+    @ValueSource(strings = {"2147483648", "100001", "-3", "0"})
     @ParameterizedTest
     void checkOutOfRange(String racingTime) {
         checkIllegalArgumentException(racingTime);
