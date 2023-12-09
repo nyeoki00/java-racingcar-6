@@ -1,11 +1,13 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CarRacing {
-    private static final String WINNER_DELIMITER = ",";
+    private static final String WINNER_DELIMITER = ", ";
 
     private final List<Car> cars;
     private final HashMap<String, Integer> racingResult = new HashMap<>();
@@ -33,19 +35,18 @@ public class CarRacing {
         return racingResult;
     }
 
-    public String checkWinner() {
-        List<String> carsName = racingResult.keySet().stream().toList();
-        List<Integer> carsDistance = racingResult.values().stream().toList();
+    public String getWinners() {
+        List<String> winners = new ArrayList<>();
+        int maxDistance = Collections.max(racingResult.values());
 
-        System.out.println(carsName);
-        System.out.println(carsDistance);
-
-        int maxDistance = Collections.max(carsDistance);
-        int indexOfMaxDistance = carsDistance.indexOf(maxDistance);
-        String winners = carsName.get(indexOfMaxDistance);
+        for (String key : racingResult.keySet()) {
+            if (racingResult.get(key).equals(maxDistance)) {
+                winners.add(key);
+            }
+        }
 
         System.out.println(winners);
 
-        return winners;
+        return String.join(WINNER_DELIMITER, winners);
     }
 }

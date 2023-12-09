@@ -25,10 +25,9 @@ public class RacingController {
 
     private List<String> getCarNames() {
         CarNameValidator carNameValidator = new CarNameValidator();
-
+        List<String> carNames = parserCarNames(InputView.requestCarNames());
         while (true) {
             try {
-                List<String> carNames = parserCarNames(InputView.requestCarNames());
                 carNameValidator.isValid(carNames);
                 return carNames;
             } catch (IllegalArgumentException e) {
@@ -74,7 +73,7 @@ public class RacingController {
     }
 
     private void printWinner(CarRacing carRacing) {
-        OutputView.printWinnerMessage(carRacing.checkWinner());
-        ;
+        String winners = carRacing.getWinners();
+        OutputView.printWinnerMessage(winners);
     }
 }

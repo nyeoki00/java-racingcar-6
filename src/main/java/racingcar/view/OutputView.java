@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class OutputView {
     private static final String RESULT_MESSAGE = "실행 결과";

@@ -37,7 +37,5 @@
      - `최종 우승자 : [pobi], [jun]`
      - [x] 주행거리로 sort해서 가장 큰 값을 가진 자동차 출력
      - [x] 가장 큰 값을 별도의 변수 maxDistance에 저장
-     - [ ] (1) 가장 큰 값을 0으로 설정한 후 다시 sort
-     - [ ] (2) 가장 큰 값이 maxDistance와 같은지 확인
-     - [ ] 같을 경우: 해당 자동차 출력 후 (1)~(2) 작업 반복
-     - [ ] 작을 경우: 완료
+     - [x] maxDistance를 value로 가지는 key값(`winners`)을 List<String>에 저장
+     - [x] `String.join(",", winners)`를 사용하여 우승자 String 변환
