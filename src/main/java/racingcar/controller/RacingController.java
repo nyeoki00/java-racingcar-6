@@ -7,17 +7,19 @@ import racingcar.config.CarNameConfig;
 import racingcar.domain.Car;
 import racingcar.io.InputView;
 import racingcar.validator.CarNameValidator;
+import racingcar.validator.RacingTimeValidator;
 
 public class RacingController {
 
 
     public void run() {
         createCars(getCarNames());
-        getRacingTime();
+        System.out.println(getRacingTime());
     }
 
     private List<String> getCarNames() {
         CarNameValidator carNameValidator = new CarNameValidator();
+
         while (true) {
             try {
                 List<String> carNames = parserCarNames(InputView.requestCarNames());
@@ -46,7 +48,16 @@ public class RacingController {
         }
     }
 
-    private void getRacingTime() {
-        InputView.requestRacingTime();
+    private int getRacingTime() {
+        RacingTimeValidator racingTimeValidator = new RacingTimeValidator();
+        String racingTime = InputView.requestRacingTime();
+
+        try {
+            racingTimeValidator.isValid(racingTime);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return Integer.parseInt(racingTime);
     }
 }
