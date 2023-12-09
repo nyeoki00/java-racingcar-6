@@ -50,14 +50,15 @@ public class RacingController {
 
     private int getRacingTime() {
         RacingTimeValidator racingTimeValidator = new RacingTimeValidator();
-        String racingTime = InputView.requestRacingTime();
 
-        try {
-            racingTimeValidator.isValid(racingTime);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        while (true) {
+            try {
+                String racingTime = InputView.requestRacingTime();
+                racingTimeValidator.isValid(racingTime);
+                return Integer.parseInt(racingTime);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
-
-        return Integer.parseInt(racingTime);
     }
 }
