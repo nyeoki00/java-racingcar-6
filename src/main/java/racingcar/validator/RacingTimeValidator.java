@@ -11,8 +11,12 @@ public class RacingTimeValidator {
     private final Pattern NUMBER = Pattern.compile("^[\\d]*$");
 
     public void isValid(String racingTime) {
-        isNumber(racingTime);
-        checkRange(Integer.parseInt(racingTime));
+        try {
+            isNumber(racingTime);
+            checkRange(Integer.parseInt(racingTime));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALID_RACING_TIME.getMessage());
+        }
     }
 
     private void isNumber(String racingTime) {
