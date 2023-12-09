@@ -6,9 +6,10 @@ import java.util.List;
 import racingcar.config.CarNameConfig;
 import racingcar.domain.Car;
 import racingcar.domain.CarRacing;
-import racingcar.io.InputView;
+import racingcar.view.InputView;
 import racingcar.validator.CarNameValidator;
 import racingcar.validator.RacingTimeValidator;
+import racingcar.view.OutputView;
 
 public class RacingController {
 
@@ -17,7 +18,9 @@ public class RacingController {
         List<Car> cars = createCars(getCarNames());
         CarRacing racing = new CarRacing(cars);
 
-        racing.repeatRacing(getRacingTime());
+        printRacingResult(getRacingTime(), racing);
+
+        //racing.checkWinner();
     }
 
     private List<String> getCarNames() {
@@ -45,11 +48,6 @@ public class RacingController {
             cars.add(new Car(carName));
         }
 
-        //확인용
-        for (Car car : cars) {
-            System.out.println(car.getCarName() + ": " + car.getCarDistance());
-        }
-
         return cars;
     }
 
@@ -64,6 +62,14 @@ public class RacingController {
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
+        }
+    }
+
+    private void printRacingResult(int racingTime, CarRacing carRacing) {
+        OutputView.printResultMessage();
+
+        for (int i = 0; i < racingTime; i++) {
+            OutputView.printRacingResult(carRacing.getRacingResult());
         }
     }
 }
