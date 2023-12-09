@@ -30,8 +30,6 @@ public class CarRacing {
             racingResult.put(car.getCarName(), car.getCarDistance());
         }
 
-        System.out.println(racingResult);
-
         return racingResult;
     }
 
@@ -44,8 +42,6 @@ public class CarRacing {
                 winners.add(key);
             }
         }
-
-        System.out.println(winners);
 
         return String.join(WINNER_DELIMITER, winners);
     }
