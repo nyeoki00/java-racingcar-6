@@ -16,6 +16,7 @@ public class CarRacing {
     }
 
     public void repeatRacing(int racingTime) {
+        System.out.println("실행 결과");
         for (int i = 0; i < racingTime; i++) {
             getRacingResult();
         }
