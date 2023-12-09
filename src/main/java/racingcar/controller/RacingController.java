@@ -2,18 +2,29 @@ package racingcar.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import racingcar.config.CarNameConfig;
 import racingcar.io.InputView;
+import racingcar.validator.CarNameValidator;
 
 public class RacingController {
+
+
     public void run() {
-        validateCarNames();
+        getCarNames();
     }
 
-    private void validateCarNames() {
-        System.out.println(parserCarNames(InputView.requestCarNames()));
+    private void getCarNames() {
+        CarNameValidator carNameValidator = new CarNameValidator();
+        List<String> carNames = parserCarNames(InputView.requestCarNames());
+
+        try {
+            carNameValidator.validateCarName(carNames);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private List<String> parserCarNames(String carNames) {
-        return Arrays.stream(carNames.split(",")).toList();
+        return Arrays.stream(carNames.split(CarNameConfig.PARSER)).toList();
     }
 }
