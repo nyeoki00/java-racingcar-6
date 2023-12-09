@@ -1,5 +1,7 @@
 package racingcar.controller;
 
+import java.util.Arrays;
+import java.util.List;
 import racingcar.io.InputView;
 
 public class RacingController {
@@ -7,7 +9,11 @@ public class RacingController {
         validateCarNames();
     }
 
-    public void validateCarNames() {
-        System.out.println(InputView.requestCarNames());
+    private void validateCarNames() {
+        System.out.println(parserCarNames(InputView.requestCarNames()));
+    }
+
+    private List<String> parserCarNames(String carNames) {
+        return Arrays.stream(carNames.split(",")).toList();
     }
 }
