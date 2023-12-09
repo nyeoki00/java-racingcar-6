@@ -29,7 +29,7 @@ public class RacingController {
         while (true) {
             try {
                 List<String> carNames = parserCarNames(InputView.requestCarNames());
-                carNameValidator.validateCarName(carNames);
+                carNameValidator.isValid(carNames);
                 return carNames;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());

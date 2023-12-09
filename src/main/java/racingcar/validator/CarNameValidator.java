@@ -8,12 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class CarNameValidator {
-    public void validateCarName(List<String> carNames) {
-        System.out.println(carNames.size());
-        for (String carName : carNames) {
-            System.out.println(carName);
-            System.out.println(carName.length());
-        }
+    public void isValid(List<String> carNames) {
         checkLengthByCarName(carNames);
         checkDuplicateCarName(carNames);
         checkEmpty(carNames);
