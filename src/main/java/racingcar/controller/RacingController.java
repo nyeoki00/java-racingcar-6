@@ -22,6 +22,11 @@ public class RacingController {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+
+        for(String carName : carNames) {
+            System.out.println(carName);
+            System.out.println(carName.length());
+        }
     }
 
     private List<String> parserCarNames(String carNames) {
