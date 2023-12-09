@@ -1,9 +1,12 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 public class CarRacing {
+    private static final String WINNER_DELIMITER = ",";
+
     private final List<Car> cars;
     private final HashMap<String, Integer> racingResult = new HashMap<>();
 
@@ -19,23 +22,6 @@ public class CarRacing {
         return cars;
     }
 
-    /*public void checkWinner() {
-        List<String> carsName = new ArrayList<>();
-        List<Integer> carsDistance = new ArrayList<>();
-
-        for (Car car : cars) {
-            carsName.add(car.getCarName());
-            carsDistance.add(car.getCarDistance());
-        }
-
-        int maxDistance = Collections.max(carsDistance);
-        String winner = "최종우승자 : ";
-
-        winner += carsName.get(carsDistance.indexOf(maxDistance));
-
-        System.out.println(winner);
-    }*/
-
     public HashMap<String, Integer> getRacingResult() {
         for (Car car : cars) {
             car.goRacing();
@@ -45,5 +31,21 @@ public class CarRacing {
         System.out.println(racingResult);
 
         return racingResult;
+    }
+
+    public String checkWinner() {
+        List<String> carsName = racingResult.keySet().stream().toList();
+        List<Integer> carsDistance = racingResult.values().stream().toList();
+
+        System.out.println(carsName);
+        System.out.println(carsDistance);
+
+        int maxDistance = Collections.max(carsDistance);
+        int indexOfMaxDistance = carsDistance.indexOf(maxDistance);
+        String winners = carsName.get(indexOfMaxDistance);
+
+        System.out.println(winners);
+
+        return winners;
     }
 }

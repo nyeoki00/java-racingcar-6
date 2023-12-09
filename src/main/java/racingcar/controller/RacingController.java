@@ -20,7 +20,7 @@ public class RacingController {
 
         printRacingResult(getRacingTime(), racing);
 
-        //racing.checkWinner();
+        printWinner(racing);
     }
 
     private List<String> getCarNames() {
@@ -71,5 +71,10 @@ public class RacingController {
         for (int i = 0; i < racingTime; i++) {
             OutputView.printRacingResult(carRacing.getRacingResult());
         }
+    }
+
+    private void printWinner(CarRacing carRacing) {
+        OutputView.printWinnerMessage(carRacing.checkWinner());
+        ;
     }
 }
