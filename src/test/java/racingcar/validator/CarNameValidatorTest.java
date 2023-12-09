@@ -16,6 +16,17 @@ class CarNameValidatorTest {
     @ValueSource(strings = {"abcdef,f,g", ",,f", ",e,"})
     @ParameterizedTest
     void checkCarNameLength(String inputCarNames) {
+        checkIllegalArgumentException(inputCarNames);
+    }
+
+    @DisplayName("서로 중복되는 자동차 이름이 있을 경우 예외 발생")
+    @ValueSource(strings = {"aldfe,e,w,w", "oiure,slek,lfkes,slek", "poieq,poieq,ifls"})
+    @ParameterizedTest
+    void checkCarNameDuplicate(String inputCarNames) {
+        checkIllegalArgumentException(inputCarNames);
+    }
+
+    private void checkIllegalArgumentException(String inputCarNames) {
         List<String> carNames = Arrays.stream(inputCarNames.split(CarNameConfig.PARSER)).toList();
 
         assertThatThrownBy(() -> validator.validateCarName(carNames)).isInstanceOf(IllegalArgumentException.class);
