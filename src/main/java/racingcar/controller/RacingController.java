@@ -10,22 +10,19 @@ public class RacingController {
 
 
     public void run() {
-        getCarNames();
+        System.out.println(getCarNames());
     }
 
-    private void getCarNames() {
+    private List<String> getCarNames() {
         CarNameValidator carNameValidator = new CarNameValidator();
-        List<String> carNames = parserCarNames(InputView.requestCarNames());
-
-        try {
-            carNameValidator.validateCarName(carNames);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-
-        for(String carName : carNames) {
-            System.out.println(carName);
-            System.out.println(carName.length());
+        while (true) {
+            try {
+                List<String> carNames = parserCarNames(InputView.requestCarNames());
+                carNameValidator.validateCarName(carNames);
+                return carNames;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
