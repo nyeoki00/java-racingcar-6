@@ -13,6 +13,7 @@ public class RacingController {
 
     public void run() {
         createCars(getCarNames());
+        getRacingTime();
     }
 
     private List<String> getCarNames() {
@@ -41,8 +42,11 @@ public class RacingController {
 
         //확인용
         for (Car car : cars) {
-            System.out.println(car.getCarName());
-            System.out.println(car.getCarDistance());
+            System.out.println(car.getCarName() + ": " + car.getCarDistance());
         }
+    }
+
+    private void getRacingTime() {
+        InputView.requestRacingTime();
     }
 }
