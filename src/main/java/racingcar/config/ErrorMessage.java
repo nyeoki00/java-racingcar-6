@@ -7,7 +7,7 @@ public enum ErrorMessage {
             + CarNameConfig.MAX_CAR_NAME_LENGTH + "자 이내로 입력해 주세요."),
     INVALID_CAR_NAME_DUPLICATE("[ERROR] 자동차 이름이 중복되지 않게 입력해 주세요."),
     INVALID_RACING_TIME("[ERROR]" + RacingTimeValidator.MIN_RACING_TIME + " ~ "
-            + Integer.MAX_VALUE + " 사이의 값을 입력해 주세요.");
+            + String.format("%,d", RacingTimeValidator.MAX_RACING_TIME) + " 사이의 값을 입력해 주세요.");
 
     private final String message;
 
