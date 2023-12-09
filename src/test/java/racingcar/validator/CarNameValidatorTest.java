@@ -36,6 +36,6 @@ class CarNameValidatorTest {
     private void checkIllegalArgumentException(String inputCarNames) {
         List<String> carNames = Arrays.stream(inputCarNames.split(CarNameConfig.PARSER)).map(String::trim).toList();
 
-        assertThatThrownBy(() -> validator.validateCarName(carNames)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> validator.isValid(carNames)).isInstanceOf(IllegalArgumentException.class);
     }
 }
